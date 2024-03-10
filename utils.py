@@ -7,9 +7,11 @@ async def load_cogs(bot):
             await bot.load_extension(f'cogs.{filename[:-3]}')
 
 def load_queue_data():
-    if not os.path.exists('data/queue_data.json'):
+    if not os.path.exists('data/queue_data.json') or os.path.getsize('data/queue_data.json') == 0:
+        with open('data/queue_data.json', 'w') as file:
+            json.dump({}, file)
         return {}
-        
+
     with open('data/queue_data.json', 'r') as file:
         return json.load(file)
         
