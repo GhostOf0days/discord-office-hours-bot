@@ -17,7 +17,7 @@ class Queue(commands.Cog):
     @app_commands.command(name='help', description='Show available commands')
     async def help(self, interaction: discord.Interaction):
         help_text = '''
-        - Students can use the `/join` command to join the queue and provide their contact information
+        - Students can use the `/join` command to join the queue and provide their email
         - Students can use the `/leave` command to leave the queue
         - Students can use the `/status` command to check their position and wait time in the queue
         - Students can use the `/history` command to view their help history
@@ -32,7 +32,7 @@ class Queue(commands.Cog):
         await interaction.response.send_message(help_text, ephemeral=True)
             
     @app_commands.command(name='join', description='Join the queue')
-    async def join(self, interaction: discord.Interaction, contact_info: str):
+    async def join(self, interaction: discord.Interaction, email: str):
         user_id = str(interaction.user.id)
         
         if user_id in self.queue_data:
@@ -42,7 +42,7 @@ class Queue(commands.Cog):
         self.queue_data[user_id] = {
             "user_id": user_id,
             "name": interaction.user.display_name,
-            "contact_info": contact_info,
+            "email": email,
             "join_time": datetime.now().isoformat(),
             "helped_by": None,
             "help_start_time": None,
@@ -93,11 +93,13 @@ class Queue(commands.Cog):
         user_data['help_start_time'] = datetime.now().isoformat()
         utils.save_queue_data(self.queue_data)
         
+        bot_role = interaction.guild.get_role(config.BOT_ROLE)
         member = interaction.guild.get_member(int(user_id))
         overwrites = {
             interaction.guild.default_role: discord.PermissionOverwrite(read_messages=False, connect=False),
-            member: discord.PermissionOverwrite(read_messages=True, connect=True, use_video=True, stream=True),
-            interaction.user: discord.PermissionOverwrite(read_messages=True, connect=True, use_video=True, stream=True)
+            member: discord.PermissionOverwrite(read_messages=True, connect=True, stream=True),
+            interaction.user: discord.PermissionOverwrite(read_messages=True, connect=True, stream=True),
+            bot_role: discord.PermissionOverwrite(read_messages=True, send_messages=True) 
         }
         help_text_channel = await interaction.guild.create_text_channel(f'help-{member.display_name}', overwrites=overwrites)
         help_voice_channel = await interaction.guild.create_voice_channel(f'Help Voice - {member.display_name}', overwrites=overwrites)

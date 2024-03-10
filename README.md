@@ -5,7 +5,7 @@ This is a Discord bot that manages an office hours queue for students to request
 
 ## Features
 
-- Students can join the queue by providing their contact information
+- Students can join the queue by providing their email
 - TAs can view the current queue and help the next student in line
 - Private text and voice channels are automatically created for one-on-one help sessions between students and TAs
 - Students can turn on video and share their screens in the private voice channels for more interactive help sessions
@@ -50,7 +50,7 @@ This is a Discord bot that manages an office hours queue for students to request
 
 ## Usage
 
-- Students can use the `/oh join` command to join the queue and provide their contact information
+- Students can use the `/oh join` command to join the queue and provide their email
 - Students can use the `/oh leave` command to leave the queue
 - Students can use the `/oh status` command to check their position and wait time in the queue
 - Students can use the `/oh history` command to view their help history
@@ -72,7 +72,7 @@ The queue data is structured as follows:
  "user_id": {
      "user_id": "user_id",
      "name": "user_name",
-     "contact_info": "user_contact_info",
+     "email": "user_email",
      "join_time": "join_time_iso_format",
      "helped_by": "ta_name",
      "help_start_time": "help_start_time_iso_format",

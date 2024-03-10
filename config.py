@@ -1,5 +1,6 @@
 ADMIN_ROLE = 'Admin'
 TA_ROLE = 'TA'
+BOT_ROLE = 'Bot'
 QUEUE_CHANNEL = 'queue'
 QUEUE_TIMEOUT = 300  # in seconds
 INACTIVE_SESSION_MINUTES = 15
