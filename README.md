@@ -7,11 +7,13 @@ This is a Discord bot that manages an office hours queue for students to request
 
 - Students can join the queue by providing their contact information
 - TAs can view the current queue and help the next student in line
-- Private text channels are automatically created for one-on-one help sessions between students and TAs
+- Private text and voice channels are automatically created for one-on-one help sessions between students and TAs
+- Students can turn on video and share their screens in the private voice channels for more interactive help sessions
 - Students can check their position and wait time in the queue
-- Students can view their help history
-- TAs can pause and resume the queue as needed
-- Inactive students are automatically removed from the queue after a specified timeout period
+- Students can view their help history and submit feedback for their help sessions
+- TAs can set their availability status
+- Queue statistics, i.e. total students helped, are available
+- Notifications are sent to students when it's their turn and to TAs for inactive sessions
 
 ## Setup
 
@@ -33,23 +35,23 @@ This is a Discord bot that manages an office hours queue for students to request
 - Set `TA_ROLE` to the name of the TA role created in step 4
 - Set `QUEUE_CHANNEL` to the name of the queue channel created in step 4
 - Adjust `QUEUE_TIMEOUT` if needed (default is 300 seconds)
+- Adjust `INACTIVE_SESSION_MINUTES` if needed (default is 15 minutes)
 7. Run the bot with:
 ```python bot.py```
 
 ## Usage
 
-## Usage
-
-- Students can use the `/join` command to join the queue and provide their contact information.
-- Students can use the `/leave` command to leave the queue.
-- Students can use the `/status` command to check their position and wait time in the queue.
-- Students can use the `/history` command to view their help history.
-- TAs can use the `/queue` command to view the current queue.
-- TAs can use the `/next` command to help the next student in the queue. A private text channel will be created for the help session.
-- TAs can use the `/done` command to finish helping the current student and close the private text channel.
-- TAs can use the `/pause` command to pause the queue and prevent students from joining.
-- TAs can use the `/resume` command to resume the queue and allow students to join again.
-- Admins can use the `/reload` command to reload all bot extensions without restarting the bot.
+- Students can use the `/oh join` command to join the queue and provide their contact information
+- Students can use the `/oh leave` command to leave the queue
+- Students can use the `/oh status` command to check their position and wait time in the queue
+- Students can use the `/oh history` command to view their help history
+- Students can use the `/oh feedback` command to submit feedback for their help session
+- TAs can use the `/oh queue` command to view the current queue
+- TAs can use the `/oh next` command to help the next student in the queue (a private text channel and voice channel will be created)
+- TAs can use the `/oh done` command to finish helping the current student and close the private channels
+- Students can use the `/oh feedback` command to submit feedback for their help session
+- TAs can use the `/oh availability` command to set their availability status
+- Admins can use the `/oh stats` command to view queue statistics
 
 ## Data Storage
 

@@ -16,3 +16,17 @@ def load_queue_data():
 def save_queue_data(data):
     with open('data/queue_data.json', 'w') as file:
         json.dump(data, file, indent=4)
+
+def save_feedback(feedback_data):
+    feedback_file = 'data/feedback.json'
+    if not os.path.exists(feedback_file):
+        with open(feedback_file, 'w') as file:
+            json.dump([], file)
+            
+    with open(feedback_file, 'r') as file:
+        feedback_list = json.load(file)
+        
+    feedback_list.append(feedback_data)
+    
+    with open(feedback_file, 'w') as file:
+        json.dump(feedback_list, file, indent=4)
