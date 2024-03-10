@@ -36,7 +36,15 @@ This is a Discord bot that manages an office hours queue for students to request
 - Set `QUEUE_CHANNEL` to the name of the queue channel created in step 4
 - Adjust `QUEUE_TIMEOUT` if needed (default is 300 seconds)
 - Adjust `INACTIVE_SESSION_MINUTES` if needed (default is 15 minutes)
-7. Run the bot with:
+7. Invite the bot to your Discord server:
+- Go to the Discord Developer Portal: https://discord.com/developers/applications
+- Click on your bot application
+- Navigate to the "OAuth2" section in the left sidebar
+- Scroll down to the "Scopes" section and select the `bot` scope
+- In the "Bot Permissions" section, select the necessary permissions (e.g., Read Messages, Send Messages, Manage Channels, Move Members)
+- Copy the generated OAuth2 URL and open it in your web browser
+- Select the Discord server you want to add the bot to and click "Authorize"
+8. Run the bot with:
 ```python bot.py```
 
 ## Usage
