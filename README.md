@@ -24,7 +24,8 @@ This is a Discord bot that manages an office hours queue for students to request
 - Go to the Discord Developer Portal: https://discord.com/developers/applications
 - Click on "New Application" and give your bot a name
 - Navigate to the "Bot" section and click on "Add Bot"
-- Copy the bot token (you will need this in step 5)
+- Under the `Privileged Gateway Intents` section, enable `Server Members Intent` and `Message Content Intent`
+- Copy the bot token, which you can get by clicking `Reset Token` (you will need this in step 5)
 4. Set up the required roles and channels on your Discord server:
 - Create a role for TAs (e.g., "TA") and assign it to the users who will be managing the queue
 - Create a role for Admins (e.g., "Admin") and assign it to the users who will have administrative privileges
